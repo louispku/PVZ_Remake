@@ -15,7 +15,8 @@ SOURCES += \
     main.cpp \
     mainwindow.cpp \
     pea.cpp \
-    peashooter.cpp
+    peashooter.cpp \
+    zombie.cpp
 
 HEADERS += \
     basic_plant.h \
