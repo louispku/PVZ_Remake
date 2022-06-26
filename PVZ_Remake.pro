@@ -9,8 +9,11 @@ CONFIG += c++17
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    basic_plant.cpp \
+    basic_zombie.cpp \
     main.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    peashooter.cpp
 
 HEADERS += \
     basic_plant.h \
