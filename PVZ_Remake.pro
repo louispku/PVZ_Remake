@@ -10,6 +10,7 @@ CONFIG += c++17
 
 SOURCES += \
     basic_plant.cpp \
+    basic_widget.cpp \
     basic_zombie.cpp \
     main.cpp \
     mainwindow.cpp \
@@ -17,6 +18,7 @@ SOURCES += \
 
 HEADERS += \
     basic_plant.h \
+    basic_widget.h \
     basic_zombie.h \
     mainwindow.h \
     pea.h \
