@@ -27,6 +27,8 @@ void Peashooter::advance(int phase)
         return;
     }
 
+    update();
+
     if (hp <= 0)
     {
         // TODO: play death sound
