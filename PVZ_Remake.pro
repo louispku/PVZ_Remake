@@ -14,12 +14,14 @@ SOURCES += \
     basic_zombie.cpp \
     main.cpp \
     mainwindow.cpp \
+    pea.cpp \
     peashooter.cpp
 
 HEADERS += \
     basic_plant.h \
     basic_widget.h \
     basic_zombie.h \
+    config.h \
     mainwindow.h \
     pea.h \
     peashooter.h \

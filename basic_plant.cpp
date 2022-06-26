@@ -6,12 +6,27 @@ Basic_Plant::Basic_Plant() : movie(nullptr)
 
 Basic_Plant::~Basic_Plant()
 {
-    delete movie;
+    if (movie)
+    {
+        delete movie;
+    }
+}
+
+QRectF Basic_Plant::boundingRect() const
+{
+    return QRectF(-35, -35, 70, 70);
 }
 
 int Basic_Plant::type() const
 {
     return Type;
+}
+
+void Basic_Plant::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
+{
+    Q_UNUSED(option);
+    Q_UNUSED(widget);
+    painter->drawImage(boundingRect(), movie->currentImage());
 }
 
 void Basic_Plant::setMovie(const QString &path)

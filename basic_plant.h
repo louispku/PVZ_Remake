@@ -3,14 +3,13 @@
 
 #include <QGraphicsItem>
 #include <QMovie>
+#include <QPainter>
 
 // base class of any plant class
 class Basic_Plant : public QGraphicsItem
 {
 public:
     enum { Type = UserType + 1 };
-
-protected:
     int hp;
 
 private:
@@ -21,6 +20,7 @@ public:
     virtual ~Basic_Plant();
     QRectF boundingRect() const override;
     int type() const override;
+    void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget = nullptr) override;
     void setMovie(const QString& path);
 
 };
