@@ -7,6 +7,9 @@
 
 class Pea : public Basic_Widget
 {
+private:
+    QPixmap* pixmap;
+    static constexpr qreal move_speed = 360.0; // pixels per sec
 public:
     Pea();
     ~Pea();
@@ -14,9 +17,6 @@ public:
     bool collidesWithItem(const QGraphicsItem *other, Qt::ItemSelectionMode mode = Qt::IntersectsItemShape) const override;
     void advance(int phase) override;
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget = nullptr) override;
-
-private:
-    QPixmap* pixmap;
 };
 
 #endif // PEA_H

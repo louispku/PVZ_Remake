@@ -1,4 +1,7 @@
 #include "pea.h"
+#include "config.h"
+#include <QGraphicsScene>
+#include "basic_zombie.h"
 
 Pea::Pea()
 {
@@ -18,7 +21,8 @@ QRectF Pea::boundingRect() const
 bool Pea::collidesWithItem(const QGraphicsItem *other, Qt::ItemSelectionMode mode) const
 {
     Q_UNUSED(mode);
-    return false;
+    return qFuzzyCompare(other->y(), y()) && qAbs(other->x() - x()) < 15
+           && other->type() == Basic_Zombie::Type;
 }
 
 void Pea::advance(int phase)
@@ -28,7 +32,35 @@ void Pea::advance(int phase)
         return;
     }
 
-    // TODO: check zombies and attack them (if any)
+    if (x() > 600.0) // 超出屏幕
+    {
+        scene()->removeItem(this);
+        delete this;
+        return;
+    }
+    else
+    {
+        setX(x() + move_speed / FPS);
+    }
+
+    auto cldlist = collidingItems();
+    if (!cldlist.empty())
+    {
+        QGraphicsItem* leftmostItem = nullptr;
+        for (auto i : qAsConst(cldlist))
+        {
+            if (leftmostItem == nullptr || leftmostItem->x() > i->x())
+            {
+                leftmostItem = i;
+            }
+        }
+        // TODO: attack i
+
+        scene()->removeItem(this);
+        delete this;
+        return;
+    }
+
 }
 
 void Pea::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
