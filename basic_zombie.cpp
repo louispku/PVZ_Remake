@@ -8,8 +8,6 @@ Basic_Zombie::Basic_Zombie():hp(0),atk(0),speed(0.0)
 {
     movie = nullptr;
     head = nullptr;
-
-
 }
 
 Basic_Zombie::~Basic_Zombie()

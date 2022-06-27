@@ -2,15 +2,17 @@
 #include "config.h"
 #include <QGraphicsScene>
 #include "basic_zombie.h"
+#include <QDebug>
 
 Pea::Pea()
 {
-    pixmap = new QPixmap("../PVZ_Remake/resources/images/plants/PB00.gif");
+    pixmap = new QPixmap(RESOURCE_PATH + "/images/plants/Pea.png");
 }
 
 Pea::~Pea()
 {
     delete pixmap;
+    qDebug() << "Pea destroyed\n";
 }
 
 QRectF Pea::boundingRect() const
@@ -32,7 +34,7 @@ void Pea::advance(int phase)
         return;
     }
 
-    if (x() > 600.0) // 超出屏幕
+    if (x() > 900.0) // 超出屏幕
     {
         scene()->removeItem(this);
         delete this;

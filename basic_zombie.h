@@ -40,11 +40,6 @@ public:
     //边界矩形
     QRectF boundingRect() const override;
 
-
-
-
-
-
 };
 
 #endif

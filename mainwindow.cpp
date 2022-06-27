@@ -1,5 +1,8 @@
 #include "mainwindow.h"
 #include "config.h"
+#include "pea.h"
+#include "peashooter.h"
+#include "zombie.h"
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -7,6 +10,19 @@ MainWindow::MainWindow(QWidget *parent)
     timer = new QTimer(this);
     scene = new QGraphicsScene(this);
     scene->setSceneRect(150.0, 0.0, 900.0, 600.0);
+
+    auto ps = new Peashooter;
+    ps->setPos(300.0, 300.0);
+
+    auto pe = new Pea;
+    pe->setPos(350.0,300.0);
+
+    auto zb = new Zombie;
+    zb->setPos(800.0,300.0);
+
+    scene->addItem(ps);
+    scene->addItem(zb);
+    scene->addItem(pe);
 
 
     view = new QGraphicsView(scene, this);

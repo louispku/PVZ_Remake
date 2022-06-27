@@ -7,7 +7,7 @@
 Peashooter::Peashooter()
 {
     hp = init_hp;
-    setMovie("../PVZ_Remake/resources/images/plants/Peashooter/Peashooter.gif");
+    setMovie(RESOURCE_PATH + "/images/plants/Peashooter/Peashooter.gif");
 }
 
 bool Peashooter::collidesWithItem(const QGraphicsItem *other, Qt::ItemSelectionMode mode) const
