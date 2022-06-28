@@ -22,7 +22,7 @@ QRectF Pea::boundingRect() const
 
 bool Pea::collidesWithItem(const QGraphicsItem *other, Qt::ItemSelectionMode mode) const
 {
-    Q_UNUSED(mode);
+    Q_UNUSED(mode)
     return qFuzzyCompare(other->y(), y()) && qAbs(other->x() - x()) < 15
            && other->type() == Basic_Zombie::Type;
 }

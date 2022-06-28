@@ -1,10 +1,17 @@
 #include "seedbank.h"
 #include <QPainter>
+#include "basic_plant.h"
 #include "config.h"
+#include "seedpacket.h"
 
-SeedBank::SeedBank() : sun(50)
+SeedBank::SeedBank(const QVector<int>& plants) : sun(1000), selected(false)
 {
-    pixmap = new QPixmap(RESOURCE_PATH + "/images/interface/SeedBank.png")
+    pixmap = new QPixmap(RESOURCE_PATH + "/images/interface/SeedBank.png");
+    for (int i = 0; i < plants.size(); i++)
+    {
+        SeedPacket* seedpacket = new SeedPacket(plants[i], this);
+        seedpacket->setPos(-157 + 65 * i, -2);
+    }
 }
 
 QRectF SeedBank::boundingRect() const

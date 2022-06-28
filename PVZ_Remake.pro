@@ -13,9 +13,9 @@ SOURCES += \
     basic_widget.cpp \
     basic_zombie.cpp \
     battlewindow.cpp \
+    grid.cpp \
     main.cpp \
     mainwindow.cpp \
-    map.cpp \
     pea.cpp \
     peashooter.cpp \
     seedbank.cpp \
@@ -28,8 +28,8 @@ HEADERS += \
     basic_zombie.h \
     battlewindow.h \
     config.h \
+    grid.h \
     mainwindow.h \
-    map.h \
     pea.h \
     peashooter.h \
     seedbank.h \

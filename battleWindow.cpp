@@ -3,6 +3,7 @@
 #include "pea.h"
 #include "peashooter.h"
 #include "zombie.h"
+#include "grid.h"
 #include "config.h"
 
 BattleWindow::BattleWindow(MapType mapTy, QWidget *parent) : QWidget(parent), mapType(mapTy)
@@ -20,22 +21,17 @@ BattleWindow::BattleWindow(MapType mapTy, QWidget *parent) : QWidget(parent), ma
     }
     scene->setSceneRect(150.0, 0.0, 900.0, 600.0);
 
-    auto seedbank = new SeedBank;
+    seedbank = new SeedBank({PEASHOOTER, SUNFLOWER});
     seedbank->setPos(520.0, 45.0);
     scene->addItem(seedbank);
 
-    auto ps = new Peashooter;
-    ps->setPos(300.0, 300.0);
-
-    auto pe = new Pea;
-    pe->setPos(350.0,300.0);
-
-    auto zb = new Zombie;
-    zb->setPos(900.0,300.0);
-
-    scene->addItem(ps);
-    scene->addItem(zb);
-    scene->addItem(pe);
+    grid = new Grid;
+    grid->setPos(250.0, 92.0);
+    scene->addItem(grid);
+    for (auto packet : seedbank->childItems())
+    {
+        connect(static_cast<SeedPacket*>(packet), &SeedPacket::plantSelected, grid, &Grid::waitPlant);
+    }
 
     view = new QGraphicsView(scene, this);
     view->resize(902, 602);
@@ -53,4 +49,18 @@ BattleWindow::~BattleWindow()
     view = nullptr;
     delete scene;
     scene = nullptr;
+}
+
+Basic_Plant* BattleWindow::addPlant(int plantType, QPointF pos)
+{
+    Basic_Plant* plant;
+    switch (plantType)
+    {
+    case PEASHOOTER:
+        plant = new Peashooter;
+    }
+
+    plant->setPos(pos);
+    scene->addItem(plant);
+    return plant;
 }
