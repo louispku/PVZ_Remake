@@ -24,7 +24,6 @@ QRectF Basic_Zombie::boundingRect() const
 void Basic_Zombie::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
 {
     Q_UNUSED(widget)
-
     Q_UNUSED(option)
 
     QImage cur_image = movie->currentImage();

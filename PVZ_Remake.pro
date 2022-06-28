@@ -12,22 +12,28 @@ SOURCES += \
     basic_plant.cpp \
     basic_widget.cpp \
     basic_zombie.cpp \
+    battlewindow.cpp \
     main.cpp \
     mainwindow.cpp \
     map.cpp \
     pea.cpp \
     peashooter.cpp \
+    seedbank.cpp \
+    seedpacket.cpp \
     zombie.cpp
 
 HEADERS += \
     basic_plant.h \
     basic_widget.h \
     basic_zombie.h \
+    battlewindow.h \
     config.h \
     mainwindow.h \
     map.h \
     pea.h \
     peashooter.h \
+    seedbank.h \
+    seedpacket.h \
     zombie.h
 
 # Default rules for deployment.
