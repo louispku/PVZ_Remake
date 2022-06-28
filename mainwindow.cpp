@@ -28,7 +28,7 @@ MainWindow::MainWindow(QWidget *parent)
     view = new QGraphicsView(scene, this);
     view->resize(902, 602);
     view->setRenderHint(QPainter::Antialiasing);
-    view->setBackgroundBrush(QPixmap("../PVZ_Remake/resources/images/interface/background1.jpg"));
+    view->setBackgroundBrush(QPixmap(RESOURCE_PATH + "/images/interface/background1.jpg"));
     view->setCacheMode(QGraphicsView::CacheBackground);
     view->setViewportUpdateMode(QGraphicsView::BoundingRectViewportUpdate);
 

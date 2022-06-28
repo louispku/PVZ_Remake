@@ -14,6 +14,7 @@ SOURCES += \
     basic_zombie.cpp \
     main.cpp \
     mainwindow.cpp \
+    map.cpp \
     pea.cpp \
     peashooter.cpp \
     zombie.cpp
@@ -24,6 +25,7 @@ HEADERS += \
     basic_zombie.h \
     config.h \
     mainwindow.h \
+    map.h \
     pea.h \
     peashooter.h \
     zombie.h
