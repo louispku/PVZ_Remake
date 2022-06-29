@@ -13,6 +13,7 @@
 #include <selection_button.h>
 #include <plant_card.h>
 
+
 //在MainWindow里实现了选择界面 没有实现开始-选择界面-战斗界面 的切换
 //合并分支时需要把这段代码改到某个MainWindow子类窗口中？
 //"开始游戏"按钮 要在界面切换方式确定后再加入
@@ -35,21 +36,11 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+
 private:
     QGraphicsScene *scene;
     QGraphicsView *view;
     //QTimer *timer;
-
-
-
-
-
-
-
-
-
-
-
 
 };
 #endif // MAINWINDOW_H
