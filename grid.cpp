@@ -31,14 +31,19 @@ void Grid::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWid
 
 }
 
-QPoint Grid::atGrid(QPointF itemCoord) const
+QPoint Grid::itemToGrid(QPointF itemCoord) const
 {
     return QPoint(itemCoord.x() / xunit, itemCoord.y() / yunit);
 }
 
-QPointF Grid::atScene(QPoint gridCoord) const
+QPointF Grid::gridToScene(QPoint gridCoord) const
 {
     return mapToScene((gridCoord.x() + 0.5) * xunit, (gridCoord.y() + 0.5) * yunit);
+}
+
+Basic_Plant* &Grid::plantAtGrid(QPoint gridCoord)
+{
+    return plantGrid[gridCoord.x()][gridCoord.y()];
 }
 
 void Grid::mousePressEvent(QGraphicsSceneMouseEvent *event)
@@ -48,11 +53,11 @@ void Grid::mousePressEvent(QGraphicsSceneMouseEvent *event)
         return;
     }
 
-    auto gridCoord = atGrid(event->pos());
+    auto gridCoord = itemToGrid(event->pos());
     if (waitFlag >= 0 && !plantGrid[gridCoord.x()][gridCoord.y()])
     {
         auto battlewindow = reinterpret_cast<BattleWindow*>(scene()->parent());
-        plantGrid[gridCoord.x()][gridCoord.y()] = battlewindow->addPlant(waitFlag, atScene(gridCoord));
+        plantGrid[gridCoord.x()][gridCoord.y()] = battlewindow->addPlant(waitFlag, gridToScene(gridCoord));
         battlewindow->seedbank->sun -= Cost[waitFlag];
         battlewindow->seedbank->selected = false;
         battlewindow->setCursor(Qt::ArrowCursor);

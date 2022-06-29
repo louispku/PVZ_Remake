@@ -1,5 +1,6 @@
 #include "battlewindow.h"
 #include "seedbank.h"
+#include "sun.h"
 #include "pea.h"
 #include "peashooter.h"
 #include "zombie.h"
@@ -44,6 +45,7 @@ BattleWindow::BattleWindow(MapType mapTy, QWidget *parent) : QWidget(parent), ma
     view->setCacheMode(QGraphicsView::CacheBackground);
     view->setViewportUpdateMode(QGraphicsView::BoundingRectViewportUpdate);
     connect(timer, &QTimer::timeout, scene, &QGraphicsScene::advance);
+    connect(timer, &QTimer::timeout, this, &BattleWindow::produceSun);
     timer->start(1000 / FPS);
     view->show();
 }
@@ -70,7 +72,29 @@ Basic_Plant* BattleWindow::addPlant(int plantType, QPointF pos)
     return plant;
 }
 
+// without destroying the plant object
 void BattleWindow::removePlant(Basic_Plant *plant)
 {
     scene->removeItem(plant);
+    auto gridCoord = grid->itemToGrid(grid->mapFromScene(plant->scenePos()));
+    grid->plantAtGrid(gridCoord) = nullptr;
+}
+
+Sun* BattleWindow::produceSun()
+{
+    static constexpr int interval = 10;
+    static int counter = FPS * interval;
+    Sun* sun = nullptr;
+    if (counter >= FPS * interval)
+    {
+        sun = new Sun;
+        sun->setPos(300.0 + 600.0 * (qreal)rand() / RAND_MAX, -50.0);
+        scene->addItem(sun);
+        counter = 0;
+    }
+    else
+    {
+        counter++;
+    }
+    return sun;
 }

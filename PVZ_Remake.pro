@@ -21,6 +21,7 @@ SOURCES += \
     seedbank.cpp \
     seedpacket.cpp \
     shovelbank.cpp \
+    sun.cpp \
     zombie.cpp
 
 HEADERS += \
@@ -36,6 +37,7 @@ HEADERS += \
     seedbank.h \
     seedpacket.h \
     shovelbank.h \
+    sun.h \
     zombie.h
 
 # Default rules for deployment.

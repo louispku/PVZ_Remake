@@ -8,8 +8,8 @@ class Grid : public QObject, public QGraphicsItem
 {
     Q_OBJECT
 private:
-    Basic_Plant *plantGrid[9][5];
     int waitFlag;
+    Basic_Plant *plantGrid[9][5];
 
 public:
     static constexpr qreal xunit = 83.0;
@@ -24,8 +24,9 @@ public:
 
     QRectF boundingRect() const override;
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget = nullptr) override;
-    QPoint atGrid(QPointF itemCoord) const;
-    QPointF atScene(QPoint gridCoord) const;
+    QPoint itemToGrid(QPointF itemCoord) const;
+    QPointF gridToScene(QPoint gridCoord) const;
+    Basic_Plant* &plantAtGrid(QPoint gridCoord);
 
 protected:
     void mousePressEvent(QGraphicsSceneMouseEvent *event) override;

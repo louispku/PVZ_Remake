@@ -5,6 +5,7 @@
 #include "grid.h"
 #include "seedbank.h"
 #include "shovelbank.h"
+#include "sun.h"
 #include <QWidget>
 #include <QGraphicsScene>
 #include <QGraphicsView>
@@ -28,6 +29,8 @@ public:
     Basic_Plant* addPlant(int plantType, QPointF pos);
     void removePlant(Basic_Plant* plant);
 
+private:
+    Sun* produceSun();
 
 private:
     QGraphicsScene *scene;
