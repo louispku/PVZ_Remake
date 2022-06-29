@@ -8,6 +8,7 @@ class Sun : public QGraphicsItem
 {
 public:
     Sun();
+    Sun(qreal ylimit);
     ~Sun();
     QRectF boundingRect() const override;
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget = nullptr) override;

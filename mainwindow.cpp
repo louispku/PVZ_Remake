@@ -4,7 +4,7 @@
 
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
 {
-    auto selectwindow = new PlantSelectWindow(this);
+    auto selectwindow = new BattleWindow(BattleWindow::DAY, this);
     selectwindow->setFixedSize(900, 600);
     selectwindow->show();
 }

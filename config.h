@@ -2,6 +2,10 @@
 #define CONFIG_H
 #include <QString>
 
+#define SHORT_CD 7
+#define MIDDLE_CD 20
+#define LONG_CD 40
+
 static constexpr int FPS = 30; // 画面帧率, 所有部件的操作以帧为单位进行
 static const QString RESOURCE_PATH = "../PVZ_Remake/resources";
 
@@ -40,15 +44,31 @@ const int Cost[] =
 {
     100,
     50,
-    150
+    150,
+    50,
+    25,
+    175,
+    200,
+    0,
+    25,
+    75,
+    75
 };
 
 // in sec
 const int CoolDown[] =
 {
-    10,
-    10,
-    20
+    SHORT_CD,
+    SHORT_CD,
+    LONG_CD,
+    MIDDLE_CD,
+    MIDDLE_CD,
+    SHORT_CD,
+    SHORT_CD,
+    SHORT_CD,
+    SHORT_CD,
+    SHORT_CD,
+    SHORT_CD
 };
 
 #endif // CONFIG_H

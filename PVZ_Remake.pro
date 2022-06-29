@@ -20,6 +20,7 @@ SOURCES += \
     peashooter.cpp \
     plant_card.cpp \
     plantselectwindow.cpp \
+    sunflower.cpp \
     text.cpp \
     selection_button.cpp\
     seedbank.cpp \
@@ -40,6 +41,7 @@ HEADERS += \
     pea.h \
     peashooter.h \
     plantselectwindow.h \
+    sunflower.h \
     zombie.h \
     plant_card.h \
     text.h \

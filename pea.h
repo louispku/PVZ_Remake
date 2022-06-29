@@ -10,6 +10,9 @@ class Pea : public Basic_Widget
 private:
     QPixmap* pixmap;
     static constexpr qreal move_speed = 360.0; // pixels per sec
+
+public:
+    static constexpr int atk = 20;
 public:
     Pea();
     ~Pea();
