@@ -16,7 +16,10 @@ SOURCES += \
     mainwindow.cpp \
     pea.cpp \
     peashooter.cpp \
-    zombie.cpp
+    zombie.cpp \
+    plant_card.cpp \
+    text.cpp \
+    selection_button.cpp
 
 HEADERS += \
     basic_plant.h \
@@ -26,7 +29,10 @@ HEADERS += \
     mainwindow.h \
     pea.h \
     peashooter.h \
-    zombie.h
+    zombie.h \
+    plant_card.h \
+    text.h \
+    selection_button.h
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
