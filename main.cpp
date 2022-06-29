@@ -5,7 +5,7 @@
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-    MainWindow w;
+    MainWindow w(nullptr);
     w.setFixedSize(900, 600);
     w.setWindowTitle("PVZ Remake");
     w.show();
