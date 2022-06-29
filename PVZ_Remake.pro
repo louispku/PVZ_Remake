@@ -20,6 +20,7 @@ SOURCES += \
     peashooter.cpp \
     seedbank.cpp \
     seedpacket.cpp \
+    shovelbank.cpp \
     zombie.cpp
 
 HEADERS += \
@@ -34,6 +35,7 @@ HEADERS += \
     peashooter.h \
     seedbank.h \
     seedpacket.h \
+    shovelbank.h \
     zombie.h
 
 # Default rules for deployment.

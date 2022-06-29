@@ -9,14 +9,14 @@ class Grid : public QObject, public QGraphicsItem
     Q_OBJECT
 private:
     Basic_Plant *plantGrid[9][5];
-    int expectPlant;
+    int waitFlag;
 
 public:
     static constexpr qreal xunit = 83.0;
     static constexpr qreal yunit = 96.0;
 
 public slots:
-    void waitPlant(int plantTy);
+    void setWaitFlag(int plantTy);
 
 public:
     Grid();

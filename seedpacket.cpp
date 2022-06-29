@@ -1,4 +1,5 @@
 #include "seedpacket.h"
+#include "battlewindow.h"
 #include "seedbank.h"
 #include "config.h"
 #include <QPainter>

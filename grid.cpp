@@ -6,12 +6,12 @@
 #include <QGraphicsSceneMouseEvent>
 
 
-void Grid::waitPlant(int plantTy)
+void Grid::setWaitFlag(int plantTy)
 {
-    expectPlant = plantTy;
+    waitFlag = plantTy;
 }
 
-Grid::Grid() : expectPlant(-1)
+Grid::Grid() : waitFlag(-1)
 {
     memset(plantGrid, 0, sizeof(plantGrid));
 }
@@ -43,30 +43,38 @@ QPointF Grid::atScene(QPoint gridCoord) const
 
 void Grid::mousePressEvent(QGraphicsSceneMouseEvent *event)
 {
-    if (expectPlant < 0 || event->button() != Qt::LeftButton)
+    if (waitFlag == -1 || event->button() != Qt::LeftButton)
     {
         return;
     }
 
     auto gridCoord = atGrid(event->pos());
-    if (!plantGrid[gridCoord.x()][gridCoord.y()])
+    if (waitFlag >= 0 && !plantGrid[gridCoord.x()][gridCoord.y()])
     {
         auto battlewindow = reinterpret_cast<BattleWindow*>(scene()->parent());
-        plantGrid[gridCoord.x()][gridCoord.y()] = battlewindow->addPlant(expectPlant, atScene(gridCoord));
-        auto seedbank = qgraphicsitem_cast<SeedBank*>(scene()->items(QPointF(300, 15))[0]);
-        seedbank->sun -= Cost[expectPlant];
-        seedbank->selected = false;
+        plantGrid[gridCoord.x()][gridCoord.y()] = battlewindow->addPlant(waitFlag, atScene(gridCoord));
+        battlewindow->seedbank->sun -= Cost[waitFlag];
+        battlewindow->seedbank->selected = false;
         battlewindow->setCursor(Qt::ArrowCursor);
 
-        for (auto p : seedbank->childItems())
+        for (auto p : battlewindow->seedbank->childItems())
         {
             auto seedpacket = qgraphicsitem_cast<SeedPacket*>(p);
-            if (seedpacket->plantType == expectPlant)
+            if (seedpacket->plantType == waitFlag)
             {
                 seedpacket->counter = 0;
             }
         }
 
-        expectPlant = -1;
+        waitFlag = -1;
+    }
+    else if (waitFlag == -2 && plantGrid[gridCoord.x()][gridCoord.y()])
+    {
+         auto battlewindow = reinterpret_cast<BattleWindow*>(scene()->parent());
+         battlewindow->removePlant(plantGrid[gridCoord.x()][gridCoord.y()]);
+         delete plantGrid[gridCoord.x()][gridCoord.y()];
+         plantGrid[gridCoord.x()][gridCoord.y()] = nullptr;
+         battlewindow->shovelbank->selected = false;
+         battlewindow->setCursor(Qt::ArrowCursor);
     }
 }

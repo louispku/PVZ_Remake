@@ -25,13 +25,18 @@ BattleWindow::BattleWindow(MapType mapTy, QWidget *parent) : QWidget(parent), ma
     seedbank->setPos(520.0, 45.0);
     scene->addItem(seedbank);
 
+    shovelbank = new ShovelBank;
+    shovelbank->setPos(800.0, 0.0);
+    scene->addItem(shovelbank);
+
     grid = new Grid;
     grid->setPos(250.0, 92.0);
     scene->addItem(grid);
     for (auto packet : seedbank->childItems())
     {
-        connect(static_cast<SeedPacket*>(packet), &SeedPacket::plantSelected, grid, &Grid::waitPlant);
+        connect(static_cast<SeedPacket*>(packet), &SeedPacket::plantSelected, grid, &Grid::setWaitFlag);
     }
+    connect(shovelbank, &ShovelBank::shovelSelected, grid, &Grid::setWaitFlag);
 
     view = new QGraphicsView(scene, this);
     view->resize(902, 602);
@@ -57,10 +62,15 @@ Basic_Plant* BattleWindow::addPlant(int plantType, QPointF pos)
     switch (plantType)
     {
     case PEASHOOTER:
-        plant = new Peashooter;
+        plant = new Peashooter; break;
     }
 
     plant->setPos(pos);
     scene->addItem(plant);
     return plant;
+}
+
+void BattleWindow::removePlant(Basic_Plant *plant)
+{
+    scene->removeItem(plant);
 }
