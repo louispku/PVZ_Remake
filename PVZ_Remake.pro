@@ -12,21 +12,33 @@ SOURCES += \
     basic_plant.cpp \
     basic_widget.cpp \
     basic_zombie.cpp \
+    battlewindow.cpp \
     main.cpp \
     mainwindow.cpp \
+    map.cpp \
     pea.cpp \
     peashooter.cpp \
-    zombie.cpp
+    seedbank.cpp \
+    seedpacket.cpp \
+    zombie.cpp \
+    initialwindow.cpp \
+    selectwindow.cpp \
 
 HEADERS += \
     basic_plant.h \
     basic_widget.h \
     basic_zombie.h \
+    battlewindow.h \
     config.h \
     mainwindow.h \
+    map.h \
     pea.h \
     peashooter.h \
-    zombie.h
+    seedbank.h \
+    seedpacket.h \
+    zombie.h \
+    initialwindow.h \
+    selectwindow.h \
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
