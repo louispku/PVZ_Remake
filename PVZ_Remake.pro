@@ -18,11 +18,15 @@ SOURCES += \
     mainwindow.cpp \
     pea.cpp \
     peashooter.cpp \
+    plant_card.cpp \
+    text.cpp \
+    selection_button.cpp
     seedbank.cpp \
     seedpacket.cpp \
     shovelbank.cpp \
     sun.cpp \
     zombie.cpp
+
 
 HEADERS += \
     basic_plant.h \
@@ -34,11 +38,14 @@ HEADERS += \
     mainwindow.h \
     pea.h \
     peashooter.h \
+    zombie.h \
+    plant_card.h \
+    text.h \
+    selection_button.h
     seedbank.h \
     seedpacket.h \
     shovelbank.h \
     sun.h \
-    zombie.h
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
