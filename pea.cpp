@@ -2,6 +2,7 @@
 #include "config.h"
 #include <QGraphicsScene>
 #include "basic_zombie.h"
+#include "basic_plant.h"
 #include <QDebug>
 
 Pea::Pea()
@@ -12,7 +13,6 @@ Pea::Pea()
 Pea::~Pea()
 {
     delete pixmap;
-    qDebug() << "Pea destroyed\n";
 }
 
 QRectF Pea::boundingRect() const
@@ -22,8 +22,8 @@ QRectF Pea::boundingRect() const
 
 bool Pea::collidesWithItem(const QGraphicsItem *other, Qt::ItemSelectionMode mode) const
 {
-    Q_UNUSED(mode);
-    return qFuzzyCompare(other->y(), y()) && qAbs(other->x() - x()) < 15
+    Q_UNUSED(mode)
+    return qFuzzyCompare(other->y(), y()) && qAbs(other->x() - x()) < 10
            && other->type() == Basic_Zombie::Type;
 }
 
@@ -48,15 +48,8 @@ void Pea::advance(int phase)
     auto cldlist = collidingItems();
     if (!cldlist.empty())
     {
-        QGraphicsItem* leftmostItem = nullptr;
-        for (auto i : qAsConst(cldlist))
-        {
-            if (leftmostItem == nullptr || leftmostItem->x() > i->x())
-            {
-                leftmostItem = i;
-            }
-        }
-        // TODO: attack i
+        QGraphicsItem* leftmostItem = cldlist.front();
+        qgraphicsitem_cast<Basic_Zombie*>(leftmostItem)->attacked(atk, Basic_Plant::Normal);
 
         scene()->removeItem(this);
         delete this;
@@ -67,5 +60,7 @@ void Pea::advance(int phase)
 
 void Pea::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
 {
+    Q_UNUSED(option)
+    Q_UNUSED(widget)
     painter->drawImage(boundingRect(), pixmap->toImage());
 }

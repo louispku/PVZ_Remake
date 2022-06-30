@@ -10,18 +10,30 @@ class Basic_Plant : public QGraphicsItem
 {
 public:
     enum { Type = UserType + 1 };
+    enum DamageType
+    {
+        Normal = 0,
+        Bomb = 1,
+        Mine = 2,
+        Penetrate = 3
+    };
+
     int hp;
 
-private:
+protected:
     QMovie* movie;
 
 public:
-    Basic_Plant();
+    Basic_Plant(QGraphicsItem* parent = nullptr);
     virtual ~Basic_Plant();
-    QRectF boundingRect() const override;
+    virtual QRectF boundingRect() const override;
     int type() const override;
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget = nullptr) override;
     void setMovie(const QString& path);
+    virtual bool isMushroom() const;
+
+protected:
+    void deleteSelf();
 
 };
 

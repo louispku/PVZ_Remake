@@ -2,14 +2,15 @@
 #include "battleWindow.h"
 #include "selectwindow.h"
 #include "config.h"
+#include "plantselectwindow.h"
+#include "battlewindow.h"
 
-
-MainWindow::MainWindow(QWidget *parent)
-    : QMainWindow(parent)
+MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
 {
-    auto mainwindow = new SelectWindow(this);
-    mainwindow->setFixedSize(900, 600);
-    mainwindow->show();
+
+    cur_interface = new PlantSelectWindow(this);
+    cur_interface->setFixedSize(900, 600);
+    cur_interface->show();
 }
 
 MainWindow::~MainWindow()
@@ -17,3 +18,11 @@ MainWindow::~MainWindow()
 
 }
 
+void MainWindow::selectToGame(QVector<int> selected)
+{
+    cur_interface->close();
+    //delete cur_interface;
+    cur_interface = new BattleWindow(BattleWindow::DAY, selected, this);
+    cur_interface->setFixedSize(900, 600);
+    cur_interface->show();
+}

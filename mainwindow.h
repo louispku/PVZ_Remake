@@ -3,15 +3,19 @@
 
 #include <QMainWindow>
 
-
-class MainWindow : public QMainWindow
+class MainWindow: public QMainWindow
 {
     Q_OBJECT
 
 public:
-    MainWindow(QWidget *parent = nullptr);
+    MainWindow(QWidget* parent = nullptr);
     ~MainWindow();
 
+public slots:
+    void selectToGame(QVector<int> selected);
+
+private:
+    QWidget* cur_interface;
 
 };
 #endif // MAINWINDOW_H
