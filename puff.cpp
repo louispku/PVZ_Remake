@@ -1,40 +1,39 @@
-#include "pea.h"
+#include "puff.h"
 #include "config.h"
-#include <QGraphicsScene>
+#include "qgraphicsscene.h"
 #include "basic_zombie.h"
 #include "basic_plant.h"
-#include <QDebug>
 
-Pea::Pea()
+Puff::Puff(qreal stpx) : stopX(stpx)
 {
-    pixmap = new QPixmap(RESOURCE_PATH + "/images/plants/Pea.png");
+    pixmap = new QPixmap(RESOURCE_PATH + "/images/plants/PuffShroom_puff.png");
 }
 
-Pea::~Pea()
+Puff::~Puff()
 {
     delete pixmap;
 }
 
-QRectF Pea::boundingRect() const
+QRectF Puff::boundingRect() const
 {
-    return QRectF(-12, -28, 24, 24);
+    return QRectF(-10.0, -10.0, 20.0, 20.0);
 }
 
-bool Pea::collidesWithItem(const QGraphicsItem *other, Qt::ItemSelectionMode mode) const
+bool Puff::collidesWithItem(const QGraphicsItem *other, Qt::ItemSelectionMode mode) const
 {
     Q_UNUSED(mode)
     return qFuzzyCompare(other->y(), y()) && qAbs(other->x() - x()) < 10
-           && other->type() == Basic_Zombie::Type;
+            && other->type() == Basic_Zombie::Type;
 }
 
-void Pea::advance(int phase)
+void Puff::advance(int phase)
 {
     if (phase == 0)
     {
         return;
     }
 
-    if (x() > 900.0) // 超出屏幕
+    if (x() > stopX) // 超出射程
     {
         scene()->removeItem(this);
         delete this;
@@ -55,12 +54,12 @@ void Pea::advance(int phase)
         delete this;
         return;
     }
-
 }
 
-void Pea::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
+void Puff::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
 {
     Q_UNUSED(option)
     Q_UNUSED(widget)
     painter->drawImage(boundingRect(), pixmap->toImage());
 }
+

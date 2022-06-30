@@ -1,25 +1,24 @@
-#ifndef PEA_H
-#define PEA_H
+#ifndef PUFF_H
+#define PUFF_H
 
-#include "basic_widget.h"
-#include <QPixmap>
-#include <QPainter>
+#include <QGraphicsItem>
 
-class Pea : public Basic_Widget
+class Puff : public QGraphicsItem
 {
 private:
     QPixmap* pixmap;
     static constexpr qreal move_speed = 360.0; // pixels per sec
+    qreal stopX;
 
 public:
     static constexpr int atk = 20;
 public:
-    Pea();
-    ~Pea();
+    Puff(qreal stpx);
+    ~Puff();
     QRectF boundingRect() const override;
     bool collidesWithItem(const QGraphicsItem *other, Qt::ItemSelectionMode mode = Qt::IntersectsItemShape) const override;
     void advance(int phase) override;
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget = nullptr) override;
 };
 
-#endif // PEA_H
+#endif // PUFF_H

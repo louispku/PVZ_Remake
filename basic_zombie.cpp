@@ -16,6 +16,25 @@ Basic_Zombie::~Basic_Zombie()
     delete head;
 }
 
+void Basic_Zombie::attacked(int damage, int type)
+{
+    switch (type)
+    {
+    case Basic_Plant::Bomb:
+        hp = 0;
+        state = 3;
+        break;
+
+    case Basic_Plant::Mine:
+        hp -= damage;
+        state = 4;
+        break;
+
+    default:
+        hp -= damage;
+    }
+}
+
 QRectF Basic_Zombie::boundingRect() const
 {
     return QRectF(-80, -100, 200, 140);
@@ -80,4 +99,15 @@ void Basic_Zombie::setHead(QString  gifPath)
         delete head;
     head = new QMovie(gifPath);
     head->start();
+}
+
+bool Basic_Zombie::collidesWithItem(const QGraphicsItem *other, Qt::ItemSelectionMode mode) const
+{
+    Q_UNUSED(mode)
+    if(other->type() == Basic_Plant::Type
+            && qFuzzyCompare(other->y(), y())
+            && qAbs(other->x() - x()) < 30){
+        return true;
+    }
+    else return false;
 }

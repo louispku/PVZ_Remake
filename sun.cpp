@@ -13,6 +13,12 @@ Sun::Sun() : lifetime(0)
     stopY = 200.0 * (qreal)rand() / RAND_MAX + 200.0;
 }
 
+Sun::Sun(qreal ylimit) : stopY(ylimit), lifetime(0)
+{
+    movie = new QMovie(RESOURCE_PATH + "/images/interface/Sun.gif");
+    movie->start();
+}
+
 Sun::~Sun()
 {
     delete movie;
@@ -53,7 +59,7 @@ void Sun::advance(int stage)
 
     if (y() < stopY)
     {
-        qDebug() << x() << "," << y() << endl;
+        //qDebug() << x() << "," << y() << endl;
         setY(y() + dropSpeed / FPS);
     }
 }

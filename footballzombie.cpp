@@ -1,20 +1,15 @@
-#include "zombie.h"
-#include "config.h"
-#include <QMovie>
-#include <QPainter>
+#include "footballzombie.h"
 #include "basic_plant.h"
 
-
-Zombie::Zombie()
+FootballZombie::FootballZombie()
 {
-    hp = 170;
+    hp = 1670;
     atk = 100 * 33 / 1000;
-    speed = 80.0 * 33 / 1000 / 4.7;
-
-    setMovie(RESOURCE_PATH + "/images/zombies/Zombie/Zombie.gif");
+    speed = 80.0 * 33 / 1000 / 2.5;
+    setMovie(RESOURCE_PATH + "/images/zombies/FootballZombie/FootballZombie.gif");
 }
 
-void Zombie::advance(int phase)
+void FootballZombie::advance(int phase)
 {
     if (!phase)
         return;
@@ -35,38 +30,28 @@ void Zombie::advance(int phase)
             state = 2;
             setMovie(RESOURCE_PATH + "/images/zombies/Zombie/ZombieDie.gif");
             setHead(RESOURCE_PATH + "/images/zombies/Zombie/ZombieHead.gif");
+
         }
         else if (movie->currentFrameNumber() == movie->frameCount() - 1)
-        {
-            scene()->removeItem(this);
             delete this;
-        }
-
         return;
     }
-
     QList<QGraphicsItem *> itemlist = collidingItems();
     if (!itemlist.isEmpty())
     {
-        Basic_Plant *plant = qgraphicsitem_cast<Basic_Plant *>( itemlist[0] );
+        Basic_Plant *plant = qgraphicsitem_cast<Basic_Plant *>(itemlist[0]);
         plant->hp -= atk;
         if (state != 1)
         {
             state = 1;
-            setMovie(RESOURCE_PATH + "/images/zombies/Zombie/ZombieAttack.gif");
+            setMovie(RESOURCE_PATH + "/images/zombies/FootballZombie/Attack.gif");
         }
         return;
     }
-
-
     if (state)
     {
         state = 0;
-
-        setMovie(RESOURCE_PATH + "/images/zombies/Zombie/Zombie.gif");
-
+        setMovie(RESOURCE_PATH + "/images/zombies/FootballZombie/FootballZombie.gif");
     }
     setX(x() - speed);
-
-
 }
