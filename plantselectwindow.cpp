@@ -1,5 +1,5 @@
 #include "plantselectwindow.h"
-#include "battlewindow.h"
+#include "battleWindow.h"
 #include "mainwindow.h"
 #include "config.h"
 #include "pea.h"
@@ -39,20 +39,22 @@ PlantSelectWindow::PlantSelectWindow(QWidget *parent)
         choose->setPos(180.0,300.0);
 
         auto switchbutton = new SwitchButton("PLAY!");
-        switchbutton->setPos(700.0, 520.0);
+        switchbutton->setPos(700, 550);
         scene->addItem(switchbutton);
         connect(switchbutton, &SwitchButton::gameplay, reinterpret_cast<MainWindow*>(parent), &MainWindow::selectToGame);
 
-
         //添加植物
 
-        for(int i=0;i<=9;i++){
+        for(int i=0;i<=10;i++){
             select[i] = new Selection_Button(Selection_Button::name[i],0);
             if(i==5) continue;
             scene->addItem(select[i]);
             select[i]->setPos(Selection_Button::x[i],Selection_Button::y[i]);
 
         }
+
+
+
 
         /*select = new Selection_Button("Peashooter",0);
         scene->addItem(select);
@@ -70,9 +72,6 @@ PlantSelectWindow::PlantSelectWindow(QWidget *parent)
         view->show();
 }
 
-
-
-
 PlantSelectWindow::~PlantSelectWindow()
 {   if(view){
         delete view;
@@ -86,5 +85,4 @@ PlantSelectWindow::~PlantSelectWindow()
         delete pixmap;
         pixmap = nullptr;
     }
-
 }

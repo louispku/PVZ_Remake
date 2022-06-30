@@ -27,7 +27,7 @@ public:
     Selection_Button(QString s,int k);
     QRectF boundingRect() const override;
     void paint(QPainter *painter,const QStyleOptionGraphicsItem *option, QWidget *widget) override ;
-    void mousePressEvent(QGraphicsSceneMouseEvent *event);
+    void mousePressEvent(QGraphicsSceneMouseEvent *event) override;
     //void paintOutside(QPainter *painter);
 
 };

@@ -18,7 +18,7 @@ const QMap<QString,int> Selection_Button::map={
 
 const QVector<QString> Selection_Button::name ={
     "Peashooter","SunFlower","CherryBomb",
-    "WallNut","PotatoMine",/*"SnowPea",*/
+    "WallNut","PotatoMine","SnowPea",
     "Repeater","Puffshroom","Sunshroom",
     "Fumeshroom","Coffeebean"
 };
@@ -68,7 +68,7 @@ void Selection_Button::paint(QPainter *painter, const QStyleOptionGraphicsItem *
     Q_UNUSED(widget)
     if(kind==0){
         if(state==0){
-   
+
             painter->drawPixmap(-52.5,-31.5, QPixmap(RESOURCE_PATH + "/images/interface/" + text + ".png"));
         }
         else if(state==1){
