@@ -1,6 +1,7 @@
 #ifndef BATTLEWINDOW_H
 #define BATTLEWINDOW_H
 
+
 #include "basic_plant.h"
 #include "grid.h"
 #include "seedbank.h"

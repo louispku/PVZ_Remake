@@ -88,5 +88,3 @@ void SeedPacket::mousePressEvent(QGraphicsSceneMouseEvent *event)
     }
 
 }
-
-

@@ -24,6 +24,7 @@ enum
     COFFEEBEAN = 10
 };
 
+
 // 必须与资源目录的文件夹名称相同
 const QString PlantName[] =
 {
@@ -39,6 +40,7 @@ const QString PlantName[] =
     "FumeShroom",
     "CoffeeBean"
 };
+
 
 const int Cost[] =
 {
