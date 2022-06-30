@@ -18,7 +18,7 @@ const QMap<QString,int> Selection_Button::map={
 
 const QVector<QString> Selection_Button::name ={
     "Peashooter","SunFlower","CherryBomb",
-    "WallNut","PotatoMine","SnowPea",
+    "WallNut","PotatoMine",/*"SnowPea",*/
     "Repeater","Puffshroom","Sunshroom",
     "Fumeshroom","Coffeebean"
 };
@@ -36,7 +36,7 @@ const QVector<qreal> Selection_Button::y ={
 
 };
 int Selection_Button::counter = 0;
-std::vector<int> Selection_Button::plant_list;
+QVector<int> Selection_Button::plant_list;
 
 QString Selection_Button::cur = "";
 Selection_Button::Selection_Button(QString s,int k):text(s),state(0),kind(k)
@@ -122,7 +122,7 @@ void Selection_Button::mousePressEvent(QGraphicsSceneMouseEvent *event)
         else if(judge==1 && plant_list.size()<=6){
             counter--;
             int num = map[cur];
-            std::vector<int>::iterator iter = plant_list.begin();
+            auto iter = plant_list.begin();
             while(iter!=plant_list.end()){
                 if(*iter==num){
                     plant_list.erase(iter);

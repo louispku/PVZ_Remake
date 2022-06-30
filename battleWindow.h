@@ -24,7 +24,7 @@ public:
 
 
 public:
-    BattleWindow(MapType mapTy, QWidget* parent = nullptr);
+    BattleWindow(MapType mapTy, QVector<int> selected, QWidget* parent = nullptr);
     ~BattleWindow();
     Basic_Plant* addPlant(int plantType, QPointF pos);
     void removePlant(Basic_Plant* plant);

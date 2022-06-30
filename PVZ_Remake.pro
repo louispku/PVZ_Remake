@@ -18,6 +18,7 @@ SOURCES += \
     coffeebean.cpp \
     conezombie.cpp \
     footballzombie.cpp \
+    button.cpp \
     grid.cpp \
     main.cpp \
     mainwindow.cpp \
@@ -33,6 +34,7 @@ SOURCES += \
     screenzombie.cpp \
     sunflower.cpp \
     sunshroom.cpp \
+    switchbutton.cpp \
     text.cpp \
     selection_button.cpp\
     seedbank.cpp \
@@ -52,6 +54,7 @@ HEADERS += \
     cherrybomb.h \
     coffeebean.h \
     conezombie.h \
+    button.h \
     config.h \
     footballzombie.h \
     grid.h \
@@ -68,6 +71,7 @@ HEADERS += \
     sunflower.h \
     sunshroom.h \
     wallnut.h \
+    switchbutton.h \
     zombie.h \
     plant_card.h \
     text.h \
