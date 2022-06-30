@@ -15,7 +15,6 @@ public:
     void mousePressEvent(QGraphicsSceneMouseEvent *event) override;
     void mouseReleaseEvent(QGraphicsSceneMouseEvent *event) override;
 
-
 signals:
     void gameplay(QVector<int> selected);
 

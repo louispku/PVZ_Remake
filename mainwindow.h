@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include "battleWindow.h"
 
 class MainWindow: public QMainWindow
 {
@@ -12,10 +13,12 @@ public:
     ~MainWindow();
 
 public slots:
-    void selectToGame(QVector<int> selected);
+    void plantSelectToGame(QVector<int> selected);
+    void mapSelectToPlantSelect(BattleWindow::MapType mapTy);
 
 private:
     QWidget* cur_interface;
+    BattleWindow::MapType mapType;
 
 };
 #endif // MAINWINDOW_H

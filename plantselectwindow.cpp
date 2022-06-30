@@ -41,7 +41,7 @@ PlantSelectWindow::PlantSelectWindow(QWidget *parent)
         auto switchbutton = new SwitchButton("PLAY!");
         switchbutton->setPos(700, 550);
         scene->addItem(switchbutton);
-        connect(switchbutton, &SwitchButton::gameplay, reinterpret_cast<MainWindow*>(parent), &MainWindow::selectToGame);
+        connect(switchbutton, &SwitchButton::gameplay, reinterpret_cast<MainWindow*>(parent), &MainWindow::plantSelectToGame);
 
         //添加植物
 

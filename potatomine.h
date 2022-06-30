@@ -7,7 +7,7 @@ class PotatoMine : public Basic_Plant
 {
 public:
     static constexpr int init_hp = 300;
-    static constexpr int readyTime = 5; // in sec
+    static constexpr int readyTime = 15; // in sec
     static constexpr int boomAnimeTime = 1; // in sec
 
 public:

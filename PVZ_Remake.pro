@@ -32,6 +32,7 @@ SOURCES += \
     puffshroom.cpp \
     repeater.cpp \
     screenzombie.cpp \
+    selectwindow.cpp \
     sunflower.cpp \
     sunshroom.cpp \
     switchbutton.cpp \
@@ -68,6 +69,7 @@ HEADERS += \
     puffshroom.h \
     repeater.h \
     screenzombie.h \
+    selectwindow.h \
     sunflower.h \
     sunshroom.h \
     wallnut.h \
