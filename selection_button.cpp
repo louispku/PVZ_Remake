@@ -6,6 +6,7 @@
 #include <QGraphicsScene>
 #include <QPixmap>
 #include <vector>
+#include "config.h"
 
 const QMap<QString,int> Selection_Button::map={
     {"Peashooter",0},{"SunFlower",1},{"CherryBomb",2},
@@ -23,15 +24,15 @@ const QVector<QString> Selection_Button::name ={
 };
 
 const QVector<qreal> Selection_Button::x ={
+  350.0,350.0+106.0,350.0+2*106.0,350.0+3*106.0,350.0+4*106.0,0.0,
   350.0,350.0+106.0,350.0+2*106.0,350.0+3*106.0,350.0+4*106.0,
-  350.0,350.0+106.0,350.0+2*106.0,350.0+3*106.0,350.0+4*106.0,
-    350.0
+
 };
 
 const QVector<qreal> Selection_Button::y ={
-  350.0,350.0,350.0,350.0,350.0,
+  350.0,350.0,350.0,350.0,350.0,0.0,
   420.0,420.0,420.0,420.0,420.0,
-    490.0
+
 
 };
 int Selection_Button::counter = 0;
@@ -68,10 +69,10 @@ void Selection_Button::paint(QPainter *painter, const QStyleOptionGraphicsItem *
     if(kind==0){
         if(state==0){
    
-            painter->drawPixmap(-52.5,-31.5, QPixmap("../PVZ_Remake/resources/images/interface/" + text + ".png"));
+            painter->drawPixmap(-52.5,-31.5, QPixmap(RESOURCE_PATH + "/images/interface/" + text + ".png"));
         }
         else if(state==1){
-            painter->drawPixmap(-52.5,-31.5, QPixmap("../PVZ_Remake/resources/images/interface/grey_" + text + ".png"));
+            painter->drawPixmap(-52.5,-31.5, QPixmap(RESOURCE_PATH + "/images/interface/grey_" + text + ".png"));
         }
 
 
@@ -82,14 +83,14 @@ void Selection_Button::paint(QPainter *painter, const QStyleOptionGraphicsItem *
         for(int i=0;i<plant_list.size();++i){
             int num = plant_list[i];
             QString tmp = name[num];
-            painter->drawPixmap(-52.5, -220.0+80*i, QPixmap("../PVZ_Remake/resources/images/interface/" + tmp + ".png"));
+            painter->drawPixmap(-52.5, -220.0+80*i, QPixmap(RESOURCE_PATH + "/images/interface/" + tmp + ".png"));
 
 
         }
     }
     else if(kind==2){
         QString draw = Selection_Button::cur;
-        QPixmap pixdraw("../PVZ_Remake/resources/images/interface/show_" + draw + ".png");
+        QPixmap pixdraw(RESOURCE_PATH + "/images/interface/show_" + draw + ".png");
         painter->drawPixmap(-2-pixdraw.width()/2, -2-pixdraw.height()/2, pixdraw);
 
     }
