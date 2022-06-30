@@ -1,11 +1,23 @@
 #include "battlewindow.h"
+#include "cherrybomb.h"
+#include "potatomine.h"
+#include "puff.h"
+#include "puffshroom.h"
+#include "repeater.h"
 #include "seedbank.h"
 #include "sun.h"
 #include "pea.h"
 #include "peashooter.h"
+#include "sunflower.h"
+#include "wallnut.h"
 #include "zombie.h"
+#include "conezombie.h"
+#include "bucketzombie.h"
+#include "footballzombie.h"
+#include "screenzombie.h"
 #include "grid.h"
 #include "config.h"
+#include "QDebug"
 
 BattleWindow::BattleWindow(MapType mapTy, QWidget *parent) : QWidget(parent), mapType(mapTy)
 {
@@ -22,7 +34,7 @@ BattleWindow::BattleWindow(MapType mapTy, QWidget *parent) : QWidget(parent), ma
     }
     scene->setSceneRect(150.0, 0.0, 900.0, 600.0);
 
-    seedbank = new SeedBank({PEASHOOTER, SUNFLOWER});
+    seedbank = new SeedBank({PEASHOOTER, SUNFLOWER, WALLNUT, CHERRYBOMB, POTATOMINE, COFFEEBEAN, PUFFSHROOM});
     seedbank->setPos(520.0, 45.0);
     scene->addItem(seedbank);
 
@@ -46,6 +58,7 @@ BattleWindow::BattleWindow(MapType mapTy, QWidget *parent) : QWidget(parent), ma
     view->setViewportUpdateMode(QGraphicsView::BoundingRectViewportUpdate);
     connect(timer, &QTimer::timeout, scene, &QGraphicsScene::advance);
     connect(timer, &QTimer::timeout, this, &BattleWindow::produceSun);
+    connect(timer, &QTimer::timeout, this ,&BattleWindow::addZombie);
     timer->start(1000 / FPS);
     view->show();
 }
@@ -65,6 +78,21 @@ Basic_Plant* BattleWindow::addPlant(int plantType, QPointF pos)
     {
     case PEASHOOTER:
         plant = new Peashooter; break;
+    case SUNFLOWER:
+        plant = new SunFlower; break;
+    case WALLNUT:
+        plant = new WallNut; break;
+    case CHERRYBOMB:
+        plant = new CherryBomb; break;
+    case POTATOMINE:
+        plant = new PotatoMine; break;
+    case REPEATER:
+        plant = new Repeater; break;
+    case PUFFSHROOM:
+        plant = new PuffShroom(mapType); break;
+
+    default:
+        qDebug() << "No suitable plant\n";
     }
 
     plant->setPos(pos);
@@ -97,4 +125,46 @@ Sun* BattleWindow::produceSun()
         counter++;
     }
     return sun;
+}
+
+void BattleWindow::addZombie(){
+
+    static int lowerbound = 4;
+    static int higherbound = 8;
+
+    static int maxtime = 20 * 1000 / 33;
+    static int time = maxtime / 2;
+
+    static int counter = 0;
+    if (++counter >= time)
+    {
+        if (++lowerbound > higherbound)
+        {
+            maxtime /= 1.3;
+            higherbound *= 2;
+        }
+        counter = 0;
+        time = qrand() % (2 * maxtime / 3) + maxtime / 3;
+
+        int road = qrand() % 5;
+
+        int type = qrand() % 100;
+
+        Basic_Zombie *basic_zombie;
+        if (type < 40)
+            basic_zombie = new Zombie;
+        else if (type < 70)
+            basic_zombie = new ConeZombie;
+        else if (type < 80)
+            basic_zombie = new BucketZombie;
+        else if (type < 90)
+            basic_zombie = new ScreenZombie;
+        else
+            basic_zombie = new FootballZombie;
+
+        auto pos = grid->gridToScene(QPoint(9, road));
+        pos.setX(1010.0);
+        basic_zombie->setPos(pos);
+        scene->addItem(basic_zombie);
+        }
 }

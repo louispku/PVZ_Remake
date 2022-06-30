@@ -59,7 +59,7 @@ void Sun::advance(int stage)
 
     if (y() < stopY)
     {
-        qDebug() << x() << "," << y() << endl;
+        //qDebug() << x() << "," << y() << endl;
         setY(y() + dropSpeed / FPS);
     }
 }

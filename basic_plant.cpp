@@ -1,6 +1,8 @@
 #include "basic_plant.h"
+#include "battlewindow.h"
+#include "qgraphicsscene.h"
 
-Basic_Plant::Basic_Plant() : movie(nullptr)
+Basic_Plant::Basic_Plant(QGraphicsItem* parent) : QGraphicsItem(parent), movie(nullptr)
 {
 }
 
@@ -37,4 +39,15 @@ void Basic_Plant::setMovie(const QString &path)
     }
     movie = new QMovie(path);
     movie->start();
+}
+
+bool Basic_Plant::isMushroom() const
+{
+    return false;
+}
+
+void Basic_Plant::deleteSelf()
+{
+    reinterpret_cast<BattleWindow*>(scene()->parent())->removePlant(this);
+    delete this;
 }

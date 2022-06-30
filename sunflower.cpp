@@ -6,6 +6,7 @@
 
 SunFlower::SunFlower() : counter(0)
 {
+    hp = init_hp;
     setMovie(RESOURCE_PATH + "/images/plants/SunFlower/SunFlower.gif");
 }
 
@@ -17,6 +18,12 @@ void SunFlower::advance(int phase)
     }
 
     update();
+
+    if (hp <= 0)
+    {
+        deleteSelf();
+        return;
+    }
 
     if (counter >= FPS * sun_interval / 1000)
     {

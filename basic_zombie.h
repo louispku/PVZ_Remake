@@ -20,14 +20,13 @@ public:
     int atk;
     double speed;
 
-
-
-    int state;
+    int state; // 0-init, 1-eating, 2-dying, 3-die from bomb, 4-die from potatomine
     enum { Type = UserType + 2};
 
 public:
     Basic_Zombie();
     ~Basic_Zombie() override;
+    virtual void attacked(int damage, int type);
     int type() const override;
 
 
@@ -39,6 +38,8 @@ public:
 
     //边界矩形
     QRectF boundingRect() const override;
+
+    bool collidesWithItem(const QGraphicsItem *other, Qt::ItemSelectionMode mode) const override;
 
 };
 

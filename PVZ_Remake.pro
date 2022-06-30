@@ -13,20 +13,33 @@ SOURCES += \
     basic_widget.cpp \
     basic_zombie.cpp \
     battlewindow.cpp \
+    bucketzombie.cpp \
+    cherrybomb.cpp \
+    coffeebean.cpp \
+    conezombie.cpp \
+    footballzombie.cpp \
     grid.cpp \
     main.cpp \
     mainwindow.cpp \
+    mushroom.cpp \
     pea.cpp \
     peashooter.cpp \
     plant_card.cpp \
     plantselectwindow.cpp \
+    potatomine.cpp \
+    puff.cpp \
+    puffshroom.cpp \
+    repeater.cpp \
+    screenzombie.cpp \
     sunflower.cpp \
+    sunshroom.cpp \
     text.cpp \
     selection_button.cpp\
     seedbank.cpp \
     seedpacket.cpp \
     shovelbank.cpp \
     sun.cpp \
+    wallnut.cpp \
     zombie.cpp
 
 
@@ -35,13 +48,26 @@ HEADERS += \
     basic_widget.h \
     basic_zombie.h \
     battlewindow.h \
+    bucketzombie.h \
+    cherrybomb.h \
+    coffeebean.h \
+    conezombie.h \
     config.h \
+    footballzombie.h \
     grid.h \
     mainwindow.h \
+    mushroom.h \
     pea.h \
     peashooter.h \
     plantselectwindow.h \
+    potatomine.h \
+    puff.h \
+    puffshroom.h \
+    repeater.h \
+    screenzombie.h \
     sunflower.h \
+    sunshroom.h \
+    wallnut.h \
     zombie.h \
     plant_card.h \
     text.h \

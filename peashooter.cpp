@@ -6,6 +6,7 @@
 
 Peashooter::Peashooter()
 {
+    attack_counter = 0;
     hp = init_hp;
     setMovie(RESOURCE_PATH + "/images/plants/Peashooter/Peashooter.gif");
 }
@@ -21,7 +22,6 @@ bool Peashooter::collidesWithItem(const QGraphicsItem *other, Qt::ItemSelectionM
 void Peashooter::advance(int phase)
 {
     static const int count_max = FPS * attack_interval / 1000;
-    static int attack_counter = count_max;
     if (phase == 0)
     {
         return;
@@ -33,20 +33,24 @@ void Peashooter::advance(int phase)
     {
         // TODO: play death sound
 
-        scene()->removeItem(this);
-        delete this;
+        deleteSelf();
         return;
     }
 
     if (attack_counter >= count_max)
     {
-        if (!collidingItems().empty())
+        auto cldlist = scene()->items(x(), y(), 1400.0, 10.0, Qt::IntersectsItemBoundingRect, Qt::AscendingOrder);
+        for (auto item : cldlist)
         {
-            attack_counter = 0;
-            auto pea = new Pea;
-            pea->setX(x() + 32);
-            pea->setY(y());
-            scene()->addItem(pea);
+            if (item->type() == Basic_Zombie::Type && qFuzzyCompare(y(), item->y()))
+            {
+                attack_counter = 0;
+                auto pea = new Pea;
+                pea->setX(x() + 28);
+                pea->setY(y());
+                scene()->addItem(pea);
+                break;
+            }
         }
     }
     else

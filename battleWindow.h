@@ -31,6 +31,7 @@ public:
 
 private:
     Sun* produceSun();
+    void addZombie();
 
 private:
     QGraphicsScene *scene;
