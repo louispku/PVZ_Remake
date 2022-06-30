@@ -1,13 +1,9 @@
 #include "mainwindow.h"
-#include "battleWindow.h"
-#include "selectwindow.h"
-#include "config.h"
 #include "plantselectwindow.h"
 #include "battlewindow.h"
 
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
 {
-
     cur_interface = new PlantSelectWindow(this);
     cur_interface->setFixedSize(900, 600);
     cur_interface->show();

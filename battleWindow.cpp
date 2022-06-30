@@ -1,11 +1,4 @@
 #include "battlewindow.h"
-#include "seedbank.h"
-#include "pea.h"
-#include "peashooter.h"
-#include "zombie.h"
-#include "config.h"
-
-
 #include "cherrybomb.h"
 #include "potatomine.h"
 #include "puff.h"
