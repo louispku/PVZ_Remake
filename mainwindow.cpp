@@ -1,14 +1,13 @@
 #include "mainwindow.h"
-#include "battlewindow.h"
+#include "battleWindow.h"
 #include "selectwindow.h"
-#include "initialwindow.h"
 #include "config.h"
 
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
 {
-    auto mainwindow = new InitialWindow(this);
+    auto mainwindow = new SelectWindow(this);
     mainwindow->setFixedSize(900, 600);
     mainwindow->show();
 }

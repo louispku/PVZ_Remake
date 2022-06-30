@@ -21,7 +21,6 @@ SOURCES += \
     seedbank.cpp \
     seedpacket.cpp \
     zombie.cpp \
-    initialwindow.cpp \
     selectwindow.cpp \
 
 HEADERS += \
@@ -37,7 +36,6 @@ HEADERS += \
     seedbank.h \
     seedpacket.h \
     zombie.h \
-    initialwindow.h \
     selectwindow.h \
 
 # Default rules for deployment.
