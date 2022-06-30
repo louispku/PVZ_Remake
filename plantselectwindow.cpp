@@ -1,5 +1,6 @@
 #include "plantselectwindow.h"
 #include "battlewindow.h"
+#include "mainwindow.h"
 #include "config.h"
 #include "pea.h"
 #include "peashooter.h"
@@ -12,12 +13,13 @@
 #include "plant_card.h"
 #include "text.h"
 #include "selection_button.h"
+#include "switchbutton.h"
 #include <QGraphicsView>
 
 PlantSelectWindow::PlantSelectWindow(QWidget *parent)
     : QWidget(parent){
 
-        scene = new QGraphicsScene;
+        scene = new QGraphicsScene(this);
         scene->setSceneRect(0.0, 0.0, 900.0, 600.0);
 
         //initScene();
@@ -36,19 +38,20 @@ PlantSelectWindow::PlantSelectWindow(QWidget *parent)
         scene->addItem(choose);
         choose->setPos(180.0,300.0);
 
+        auto switchbutton = new SwitchButton("PLAY!");
+        switchbutton->setPos(700.0, 520.0);
+        scene->addItem(switchbutton);
+        connect(switchbutton, &SwitchButton::gameplay, reinterpret_cast<MainWindow*>(parent), &MainWindow::selectToGame);
 
 
         //添加植物
 
-        for(int i=0;i<=10;i++){
+        for(int i=0;i<=9;i++){
             select[i] = new Selection_Button(Selection_Button::name[i],0);
             scene->addItem(select[i]);
             select[i]->setPos(Selection_Button::x[i],Selection_Button::y[i]);
 
         }
-
-
-
 
         /*select = new Selection_Button("Peashooter",0);
         scene->addItem(select);

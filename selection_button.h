@@ -18,7 +18,7 @@ public:
     int kind;//0代表按钮 1代表选择栏 2代表图片展示栏
     static int counter;
     static QString cur;
-    static std::vector<int> plant_list;//选中的植物列表
+    static QVector<int> plant_list;//选中的植物列表
     const static QMap<QString,int> map;
     const static QVector<QString> name;
     const static QVector<qreal> x;

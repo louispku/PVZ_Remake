@@ -13,6 +13,7 @@ SOURCES += \
     basic_widget.cpp \
     basic_zombie.cpp \
     battlewindow.cpp \
+    button.cpp \
     grid.cpp \
     main.cpp \
     mainwindow.cpp \
@@ -20,6 +21,7 @@ SOURCES += \
     peashooter.cpp \
     plant_card.cpp \
     plantselectwindow.cpp \
+    switchbutton.cpp \
     text.cpp \
     selection_button.cpp\
     seedbank.cpp \
@@ -34,12 +36,14 @@ HEADERS += \
     basic_widget.h \
     basic_zombie.h \
     battlewindow.h \
+    button.h \
     config.h \
     grid.h \
     mainwindow.h \
     pea.h \
     peashooter.h \
     plantselectwindow.h \
+    switchbutton.h \
     zombie.h \
     plant_card.h \
     text.h \

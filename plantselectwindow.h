@@ -34,7 +34,6 @@ public:
     PlantSelectWindow(QWidget *parent = nullptr);
     ~PlantSelectWindow();
 
-
 private:
     QGraphicsScene *scene;
     QGraphicsView *view;

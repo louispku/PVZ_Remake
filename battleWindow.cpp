@@ -7,7 +7,7 @@
 #include "grid.h"
 #include "config.h"
 
-BattleWindow::BattleWindow(MapType mapTy, QWidget *parent) : QWidget(parent), mapType(mapTy)
+BattleWindow::BattleWindow(MapType mapTy, QVector<int> selected, QWidget *parent) : QWidget(parent), mapType(mapTy)
 {
     timer = new QTimer(this);
     scene = new QGraphicsScene(this);
@@ -22,7 +22,7 @@ BattleWindow::BattleWindow(MapType mapTy, QWidget *parent) : QWidget(parent), ma
     }
     scene->setSceneRect(150.0, 0.0, 900.0, 600.0);
 
-    seedbank = new SeedBank({PEASHOOTER, SUNFLOWER});
+    seedbank = new SeedBank(selected);
     seedbank->setPos(520.0, 45.0);
     scene->addItem(seedbank);
 

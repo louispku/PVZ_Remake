@@ -4,12 +4,21 @@
 
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
 {
-    auto selectwindow = new PlantSelectWindow(this);
-    selectwindow->setFixedSize(900, 600);
-    selectwindow->show();
+    cur_interface = new PlantSelectWindow(this);
+    cur_interface->setFixedSize(900, 600);
+    cur_interface->show();
 }
 
 MainWindow::~MainWindow()
 {
 
+}
+
+void MainWindow::selectToGame(QVector<int> selected)
+{
+    cur_interface->close();
+    //delete cur_interface;
+    cur_interface = new BattleWindow(BattleWindow::DAY, selected, this);
+    cur_interface->setFixedSize(900, 600);
+    cur_interface->show();
 }
