@@ -22,7 +22,7 @@ PlantSelectWindow::PlantSelectWindow(QWidget *parent)
 
         //initScene();
         //设置植物信息显示框
-        pixmap = new QPixmap("../PVZ_Remake/resources/images/interface/AwardScreen_Back_mid.jpg");
+        pixmap = new QPixmap(RESOURCE_PATH + "/images/interface/AwardScreen_Back_mid.jpg");
         card = new Plant_Card(pixmap);
         scene->addItem(card);
         card->setPos(550.0,200.0);
@@ -42,6 +42,7 @@ PlantSelectWindow::PlantSelectWindow(QWidget *parent)
 
         for(int i=0;i<=10;i++){
             select[i] = new Selection_Button(Selection_Button::name[i],0);
+            if(i==5) continue;
             scene->addItem(select[i]);
             select[i]->setPos(Selection_Button::x[i],Selection_Button::y[i]);
 
@@ -62,7 +63,7 @@ PlantSelectWindow::PlantSelectWindow(QWidget *parent)
         view = new QGraphicsView(scene,this);
         view->resize(902,602);
         view->setViewportUpdateMode(QGraphicsView::FullViewportUpdate);
-        view->setBackgroundBrush(QPixmap("../PVZ_Remake/resources/images/interface/Almanac_PlantBack.jpg"));
+        view->setBackgroundBrush(QPixmap(RESOURCE_PATH + "/images/interface/Almanac_PlantBack.jpg"));
         view->show();
 }
 
