@@ -3,7 +3,7 @@
 #include <QPainter>
 #include <QGraphicsSceneMouseEvent>
 #include <QGraphicsScene>
-#include "battlewindow.h"
+#include "battleWindow.h"
 #include "qdebug.h"
 
 Sun::Sun() : lifetime(0)

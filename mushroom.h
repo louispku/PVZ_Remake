@@ -2,7 +2,7 @@
 #define MUSHROOM_H
 
 #include "basic_plant.h"
-#include "battlewindow.h"
+#include "battleWindow.h"
 
 class Mushroom : public Basic_Plant
 {

@@ -19,6 +19,7 @@ SOURCES += \
     conezombie.cpp \
     footballzombie.cpp \
     button.cpp \
+    fumeshroom.cpp \
     grid.cpp \
     main.cpp \
     mainwindow.cpp \
@@ -58,6 +59,7 @@ HEADERS += \
     button.h \
     config.h \
     footballzombie.h \
+    fumeshroom.h \
     grid.h \
     mainwindow.h \
     mushroom.h \
