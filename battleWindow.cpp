@@ -1,5 +1,6 @@
 #include "battlewindow.h"
 #include "cherrybomb.h"
+#include "fumeshroom.h"
 #include "potatomine.h"
 #include "puff.h"
 #include "puffshroom.h"
@@ -9,6 +10,7 @@
 #include "pea.h"
 #include "peashooter.h"
 #include "sunflower.h"
+#include "sunshroom.h"
 #include "wallnut.h"
 #include "zombie.h"
 #include "conezombie.h"
@@ -57,7 +59,10 @@ BattleWindow::BattleWindow(MapType mapTy, QVector<int> selected, QWidget *parent
     view->setCacheMode(QGraphicsView::CacheBackground);
     view->setViewportUpdateMode(QGraphicsView::BoundingRectViewportUpdate);
     connect(timer, &QTimer::timeout, scene, &QGraphicsScene::advance);
-    connect(timer, &QTimer::timeout, this, &BattleWindow::produceSun);
+    if (mapType == DAY)
+    {
+        connect(timer, &QTimer::timeout, this, &BattleWindow::produceSun);
+    }
     connect(timer, &QTimer::timeout, this ,&BattleWindow::addZombie);
     timer->start(1000 / FPS);
     view->show();
@@ -90,6 +95,10 @@ Basic_Plant* BattleWindow::addPlant(int plantType, QPointF pos)
         plant = new Repeater; break;
     case PUFFSHROOM:
         plant = new PuffShroom(mapType); break;
+    case SUNSHROOM:
+        plant = new SunShroom(mapType); break;
+    case FUMESHROOM:
+        plant = new FumeShroom(mapType); break;
 
     default:
         qDebug() << "No suitable plant\n";

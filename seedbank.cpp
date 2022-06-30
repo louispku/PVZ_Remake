@@ -4,7 +4,7 @@
 #include "config.h"
 #include "seedpacket.h"
 
-SeedBank::SeedBank(const QVector<int>& plants) : sun(1000), selected(false)
+SeedBank::SeedBank(const QVector<int>& plants) : sun(200), selected(false)
 {
     pixmap = new QPixmap(RESOURCE_PATH + "/images/interface/SeedBank.png");
     for (int i = 0; i < plants.size(); i++)
